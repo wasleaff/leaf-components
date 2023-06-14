@@ -1,4 +1,4 @@
-name: react-component-simonsay
+name: react-leaf-components
 on: # 指定触发workflow的条件，这里是指定了每push一次到main分支，则触发一次
   push:
     branches:
@@ -16,7 +16,7 @@ jobs:  # workflows文件主体，可以指定一个或者多个，这里指定�
     - name: installNode   # 下载nodejs
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '18.12.1'
     - name: Build
       run:  npm install && npm run build-storybook # 该步骤要运行的命令，这里就是部署react 的命令
       
