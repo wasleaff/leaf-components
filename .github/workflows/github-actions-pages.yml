@@ -1,4 +1,4 @@
-name: react-component-simonsay
+name: react-leaf-components
 on: # 指定触发workflow的条件，这里是指定了每push一次到main分支，则触发一次
   push:
     branches:
