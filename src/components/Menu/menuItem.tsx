@@ -34,3 +34,5 @@ MenuItem.defaultProps = {
   disabled: false,
 };
 MenuItem.displayName = "MenuItem";
+
+export default MenuItem;

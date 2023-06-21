@@ -83,3 +83,5 @@ Button.defaultProps = {
   disable: false,
   btnType: ButtonType.Default,
 };
+
+export default Button;
