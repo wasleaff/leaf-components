@@ -1,6 +1,7 @@
 //导入语言切换配置文件
 import i18n from "./i18next";
-import type { Preview } from "@storybook/react";
+import type { Preview  } from "@storybook/react";
+
 //导入全局样式
 import "../src/styles/index.scss";
 
@@ -30,5 +31,4 @@ const preview: Preview = {
     },
   },
 };
-
 export default preview;
