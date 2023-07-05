@@ -12,7 +12,7 @@ const defaultProps = {
 
 //testProps: ButtonProps相当于类型转换！
 const testProps: ButtonProps = {
-  btnType: ButtonType.Primary,
+  btnType: "primary",
   size: ButtonSize.Large,
   className: "class",
 };
@@ -46,7 +46,7 @@ describe("test Button component", () => {
   });
   it("should render link when btnType equals link and href is provided", () => {
     const wrapper = render(
-      <Button btnType={ButtonType.Link} href="http://dummyurl">
+      <Button btnType={"link"} href="http://dummyurl">
         Link
       </Button>
     );

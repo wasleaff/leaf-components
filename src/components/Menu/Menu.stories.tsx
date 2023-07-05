@@ -35,7 +35,7 @@ export const VerticalMode = {
 export const HorizontalMode = {
   ...MenuTemplate,
   args: {
-    mode: "horizon",
+    mode: "horizontal",
   },
 };
 

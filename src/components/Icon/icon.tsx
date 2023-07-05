@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import classNames from "classnames";
 import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from "@fortawesome/react-fontawesome";
+import { ConfigContext } from "../ConfigProvider/configProvider";
 
 export type ThemeProps =
   | "primary"
@@ -25,8 +26,18 @@ export const Icon: React.FC<IconProps> = (props) => {
   const classes = classNames("leaf-icon", className, {
     [`icon-${theme}`]: theme,
   });
+
+  //-----------------
+  const { theme: configTheme } = useContext(ConfigContext);
+  // style={{ "--global-primary-color": theme || "#0d6efd" } as any}
+  //-----------------
   return (
-    <FontAwesomeIcon className={classes} {...restProps} data-testid="icon" />
+    <FontAwesomeIcon
+      className={classes}
+      {...restProps}
+      data-testid="icon"
+      style={{ "--global-primary-color": configTheme || "#0d6efd" } as any}
+    />
   );
 };
 

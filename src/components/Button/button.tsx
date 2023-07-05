@@ -1,16 +1,19 @@
 import React, { AnchorHTMLAttributes } from "react";
 import classNames from "classnames";
+import { useContext } from "react";
+import { ConfigContext } from "../ConfigProvider/configProvider";
+
 export enum ButtonSize {
   Large = "lg",
   Small = "sm",
 }
-
-export enum ButtonType {
-  Primary = "primary",
-  Default = "default",
-  Danger = "danger",
-  Link = "link",
-}
+export type ButtonType = "primary" | "danger" | "default" | "link";
+// export enum ButtonType {
+//   Primary = "primary",
+//   Default = "default",
+//   Danger = "danger",
+//   Link = "link",
+// }
 //以下注释会在storybook文档中生成description的值
 interface BaseButtonProps {
   /**
@@ -57,14 +60,17 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 export const Button: React.FC<ButtonProps> = (props) => {
   const { className, disable, size, btnType, children, href, ...restProps } =
     props;
-
+  //-----------------
+  const { theme } = useContext(ConfigContext);
+  // style={{ "--global-primary-color": theme || "#0d6efd" } as any}
+  //-----------------
   const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    disable: btnType === ButtonType.Link && disable,
+    disable: btnType === "link" && disable,
   });
 
-  if (btnType === ButtonType.Link) {
+  if (btnType === "link") {
     return (
       <a href={href} className={classes} {...restProps}>
         {children}
@@ -72,7 +78,12 @@ export const Button: React.FC<ButtonProps> = (props) => {
     );
   } else {
     return (
-      <button disabled={disable} className={classes} {...restProps}>
+      <button
+        disabled={disable}
+        className={classes}
+        {...restProps}
+        style={{ "--global-primary-color": theme || "#0d6efd" } as any}
+      >
         {children}
       </button>
     );
@@ -81,7 +92,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
 
 Button.defaultProps = {
   disable: false,
-  btnType: ButtonType.Default,
+  btnType: "default",
 };
 
 export default Button;

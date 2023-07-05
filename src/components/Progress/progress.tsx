@@ -1,5 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 // import { ThemeProps } from '../Icon/icon'
+import { ConfigContext } from "../ConfigProvider/configProvider";
+
 export interface ProgressProps {
   /**
    * The progress percentage is displayed
@@ -28,6 +30,10 @@ export const Progress: FC<ProgressProps> = (props) => {
     styles,
     // theme,
   } = props;
+  //-----------------
+  const { theme } = useContext(ConfigContext);
+  // style={{ "--global-primary-color": theme || "#0d6efd" } as any}
+  //-----------------
   return (
     <div className="leaf-progress-bar" style={styles} data-testid="progress">
       <div
@@ -37,7 +43,12 @@ export const Progress: FC<ProgressProps> = (props) => {
         <div
           // className={`leaf-progress-bar-inner color-${theme}`}
           className={`leaf-progress-bar-inner color-primary`}
-          style={{ width: `${percent}%` }}
+          style={
+            {
+              width: `${percent}%`,
+              "--global-primary-color": theme || "#0d6efd",
+            } as any
+          }
         >
           {showText && <span className="inner-text">{`${percent}%`}</span>}
         </div>

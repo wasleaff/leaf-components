@@ -1,3 +1,8 @@
+//1.将sass转为css，在darken函数中使用--global-primary-color不支持
+// --global-primary-color: #{$primary};
+//2.之后将--global-primary-color赋值给$primary,不成立，因为执行到darken函数中使用$primary是css变量回到问题一
+// --global-primary-color: #{blue};
+
 $white: #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
@@ -177,4 +182,3 @@ $box-shadow-sm: 0 0.125rem 0.25rem rgba($black, 0.075) !default;
 $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
 $box-shadow-lg: 0 1rem 3rem rgba($black, 0.175) !default;
 $box-shadow-inset: inset 0 1px 2px rgba($black, 0.075) !default;
-

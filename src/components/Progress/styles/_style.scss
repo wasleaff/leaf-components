@@ -28,7 +28,7 @@
   }
   @each $key, $val in $theme-colors {
     .color-#{$key} {
-      background-color: $val;
+      background-color: var(--global-primary-color) or $val;
     }
   }
 }

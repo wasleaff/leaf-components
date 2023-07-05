@@ -53,7 +53,12 @@
 }
 
 .btn-primary {
-  @include button-style($primary, $primary, $white);
+  // @include button-style($primary, $primary, $white);
+  @include button-style(
+    var(--global-primary-color),
+    var(--global-primary-color),
+    $white
+  );
 }
 .btn-danger {
   @include button-style($danger, $danger, $white);
@@ -65,8 +70,9 @@
     $gray-400,
     $body-color,
     $white,
-    $primary,
-    $primary
+    var(--global-primary-color),
+    var(--global-primary-color) // $primary,
+    // $primary
   );
 }
 
@@ -81,6 +87,7 @@
   }
   &:focus,
   &.focus {
+    
     text-decoration: $link-hover-decoration;
     box-shadow: none;
   }

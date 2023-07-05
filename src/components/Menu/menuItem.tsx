@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import classNames from "classnames";
 import { MenuContext } from "./menu";
+import { ConfigContext } from "../ConfigProvider/configProvider";
 
 export interface MenuItemProps {
   index?: string;
@@ -11,7 +12,11 @@ export interface MenuItemProps {
 }
 
 export const MenuItem: React.FC<MenuItemProps> = (props) => {
-  const { index, disabled, className, style, children } = props;
+  const { index, disabled, className, children } = props;
+  //-----------------
+  const { theme } = useContext(ConfigContext);
+  // style={{ "--global-primary-color": theme || "#0d6efd" } as any}
+  //-----------------
   //4.子组件获取传递的值
   const context = useContext(MenuContext);
   const classes = classNames("menu-item", className, {
@@ -24,13 +29,18 @@ export const MenuItem: React.FC<MenuItemProps> = (props) => {
     }
   };
   return (
-    <li className={classes} style={style} onClick={handleClick}>
+    <li
+      className={classes}
+      // style={style}
+      onClick={handleClick}
+      style={{ "--global-primary-color": theme || "#0d6efd" } as any}
+    >
       {children}
     </li>
   );
 };
 MenuItem.defaultProps = {
-  index: '0',
+  index: "0",
   disabled: false,
 };
 MenuItem.displayName = "MenuItem";

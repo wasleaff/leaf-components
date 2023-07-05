@@ -14,27 +14,27 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    btnType: ButtonType.Primary,
+    btnType:'primary',
     children: "Button",
   },
 };
 
 export const Default: Story = {
   args: {
-    btnType: ButtonType.Default,
+    btnType:'default',
     children: "Button",
   },
 };
 export const Danger: Story = {
   args: {
-    btnType: ButtonType.Danger,
+    btnType:'danger',
     children: "Button",
   },
 };
 
 export const Link: Story = {
   args: {
-    btnType: ButtonType.Link,
+    btnType: 'link',
     href: "https://storybook.js.org/docs/react/writing-stories/introduction",
     children: "Button",
   },
